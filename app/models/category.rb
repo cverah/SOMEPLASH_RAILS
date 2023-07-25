@@ -3,5 +3,5 @@ class Category < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_one_attached :cover
   # validations
-  validates :name, presence: true
+  validates :name, :cover, presence: true
 end
