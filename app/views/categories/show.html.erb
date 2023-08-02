@@ -24,7 +24,7 @@
       <% unless @category.comments.count > 0 %>
         <p>This category has no comments yet, please add a comment</p>
       <% else %>
-        <% @category.comments.each do |comment| %>
+        <% @category.comments.order(created_at: :desc).each do |comment| %>
           <hr>
           <%= render  "comments/comment", comment: comment %>
         <% end %>
