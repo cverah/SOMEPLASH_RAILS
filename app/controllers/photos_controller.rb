@@ -13,27 +13,32 @@ class PhotosController < ApplicationController
   # GET /photos/new
   def new
     @photo = Photo.new
+    @category = Category.find(params[:category_id])
   end
 
   # GET /photos/1/edit
   def edit
+    @category = Category.find(@photo.category_id)
   end
 
   # POST /photos
   def create
     @photo = Photo.new(photo_params)
-
+    # por error del back
+    category_id = photo_params[:category_id].to_i
+    @category = Category.find(category_id)
+   
     if @photo.save
-      redirect_to @photo, notice: "Photo was successfully created."
+      redirect_to @photo.category, notice: "Photo was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      render new_photo_path, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /photos/1
   def update
     if @photo.update(photo_params)
-      redirect_to @photo, notice: "Photo was successfully updated."
+      redirect_to @photo.category, notice: "Photo was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -42,7 +47,7 @@ class PhotosController < ApplicationController
   # DELETE /photos/1
   def destroy
     @photo.destroy
-    redirect_to photos_url, notice: "Photo was successfully destroyed.", status: :see_other
+    redirect_to @photo.category, notice: "Photo was successfully destroyed.", status: :see_other
   end
 
   private
@@ -53,6 +58,6 @@ class PhotosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def photo_params
-      params.require(:photo).permit(:title, :description, :comments_count, :category_id)
+      params.require(:photo).permit(:title, :description, :comments_count, :category_id, :image)
     end
 end

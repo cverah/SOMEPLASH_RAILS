@@ -1,12 +1,14 @@
-<div id="<%= dom_id photo %>">
+<div id="<%= dom_id photo %>" class="mb-4">
   <div class="mb-4">
     <% if photo.image.attached? %>
       <%= image_tag(photo.image, alt:"photo-image", class:"photos-card photos-card__image_photos" ) %>
     <% end %>
   </div>
-  <h3 class="heading--sm">
-    <%= photo.title %>
-  </h3>
+  
+  <%= link_to photo_path(photo), class:"photo-title"  do %>
+  <h3 class="heading--sm gray-400 semi-bolt font-monserrat"><%= photo.title%></h3>
+  <% end %>
+
 
   <small class="light text-1rem gray-300 mb-4"><%= photo.comments_count %> comments</small>
 

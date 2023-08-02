@@ -11,27 +11,31 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="mb-4">
+    <%= form.label :title, style: "display: block", class:"uppercase spacing" %>
+    <%= form.text_field :title, class:"input" %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+  <div class="mb-4">
+    <%= form.label :description, style: "display: block", class:"uppercase spacing" %>
+    <%= form.text_area :description, class:"input" %>
   </div>
 
-  <div>
-    <%= form.label :comments_count, style: "display: block" %>
-    <%= form.number_field :comments_count %>
+  <div class="mb-4 select">
+    <%= form.label :category_id, style: "display: block", class:"uppercase spacing" %>
+
+
+
+    <%= form.collection_select :category_id, Category.order("name"), :id, :name, {selected: @category.id } %>
+
   </div>
 
-  <div>
-    <%= form.label :category_id, style: "display: block" %>
-    <%= form.text_field :category_id %>
+  <div class="mb-4 ">
+    <%= form.label :image, style: "display: block", class:"uppercase spacing" %>
+    <%= form.file_field :image, class:"input" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb-4">
+    <%= form.submit class:"button button--secondary"%>
   </div>
 <% end %>
