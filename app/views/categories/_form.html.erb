@@ -21,7 +21,11 @@
     <%= form.text_area :description, class:"input" %>
   </div>
 
+  
   <div class="mb-4">
+    <% if category.cover.attached? %>
+      <%= image_tag(category.cover, alt:"cover-image", class:"categories-card__image fit-content", size:"130x80" ) %>
+    <% end %>
     <%= form.label :cover, style: "display: block", class:"uppercase spacing" %>
     <%= form.file_field :cover %>
   </div>
