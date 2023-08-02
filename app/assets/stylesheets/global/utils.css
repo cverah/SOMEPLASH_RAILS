@@ -105,3 +105,10 @@
 .width-all {
   width: 100%;
 }
+
+.uppercase {
+  text-transform: uppercase;
+}
+.spacing {
+  letter-spacing: 1.5px;
+}

@@ -22,9 +22,8 @@ class CategoriesController < ApplicationController
   # POST /categories
   def create
     @category = Category.new(category_params)
-
     if @category.save
-      redirect_to @category, notice: "Category was successfully created."
+      redirect_to root_path, notice: "Category was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -53,6 +52,6 @@ class CategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def category_params
-      params.require(:category).permit(:name, :description, :photos_count)
+      params.require(:category).permit(:name, :description, :photos_count, :cover)
     end
 end

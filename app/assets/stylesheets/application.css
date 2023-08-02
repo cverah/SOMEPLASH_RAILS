@@ -14,9 +14,9 @@
  *= require_self
  */
 
-/* * {
+* {
   border: 1px solid green;
-} */
+}
 @import url("./global.css");
 @import url("./components/button.css");
 @import url("./components/input.css");
