@@ -1,0 +1,10 @@
+.comment_content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.comment_content--footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

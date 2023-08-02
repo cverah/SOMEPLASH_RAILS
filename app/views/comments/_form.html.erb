@@ -11,17 +11,20 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
+  <div class="">
+    <%= form.text_area :body, class:"input", placeholder:"insert comment" %>
+  </div>
+
+  <div class="">
+
+    <%= form.hidden_field :commentable_id %>
+  </div>
+  <div class="">
+    
+    <%= form.hidden_field :commentable_type %>
   </div>
 
   <div>
-    <%= form.label :commentable_id, style: "display: block" %>
-    <%= form.text_field :commentable_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit :comment, class:"button button--secondary" %>
   </div>
 <% end %>
