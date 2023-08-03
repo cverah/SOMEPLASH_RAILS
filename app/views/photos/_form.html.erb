@@ -1,0 +1,41 @@
+<%= form_with(model: photo) do |form| %>
+  <% if photo.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+
+      <ul>
+        <% photo.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-4">
+    <%= form.label :title, style: "display: block", class:"uppercase spacing" %>
+    <%= form.text_field :title, class:"input" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :description, style: "display: block", class:"uppercase spacing" %>
+    <%= form.text_area :description, class:"input" %>
+  </div>
+
+  <div class="mb-4 select">
+    <%= form.label :category_id, style: "display: block", class:"uppercase spacing" %>
+
+
+
+    <%= form.collection_select :category_id, Category.order("name"), :id, :name, {selected: @category.id } %>
+
+  </div>
+
+  <div class="mb-4 ">
+    <%= form.label :image, style: "display: block", class:"uppercase spacing" %>
+    <%= form.file_field :image, class:"input" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.submit class:"button button--secondary"%>
+  </div>
+<% end %>

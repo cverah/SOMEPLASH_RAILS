@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="section">
+    <h2 class="mb-4">Search</h2>
+    <%= form_with url: "/search", method: :get do |form| %>
+      <div class="mb-4">
+        <%= form.text_field :query, class:"input", placeholder: "input name photo" %>
+      </div>
+      <div class="mb-4">
+        <%= form.submit "search photos" , class:"button button--secondary"%>
+      </div>
+    <% end %>
+
+    <%# # ejecucion del submitk %>
+    <% unless @query.nil? && @photos.nil? %>
+      <% unless @photos.count > 0 %>
+        <p>No existen ophotos</p>
+      <% else %>
+        <strong class="mb-4">Search Photos with: <%= @query %></strong>
+        <% @photos.each do |photo| %>
+          <%= render  "photos/photo", photo: photo %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

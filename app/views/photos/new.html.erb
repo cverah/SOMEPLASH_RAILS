@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="section">
+    <h1>New photo</h1>
+
+    <%= render "form", photo: @photo %>
+
+
+
+    <div>
+      <%= link_to "BACK", category_path(@category), class:"button button--subtle" %>
+    </div>
+  </div>
+</div>

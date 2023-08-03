@@ -1,0 +1,30 @@
+<%= form_with(model: comment) do |form| %>
+  <% if comment.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+        <% comment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="">
+    <%= form.text_area :body, class:"input", placeholder:"insert comment", required: true %>
+  </div>
+
+  <div class="">
+
+    <%= form.hidden_field :commentable_id %>
+  </div>
+  <div class="">
+    
+    <%= form.hidden_field :commentable_type %>
+  </div>
+
+  <div>
+    <%= form.submit :comment, class:"button button--secondary" %>
+  </div>
+<% end %>

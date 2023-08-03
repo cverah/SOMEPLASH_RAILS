@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="section">
+    <p style="color: green"><%= notice %></p>
+    <%# photo %>
+    <h2 class="mb-4">  <%= @category.name %></h2>
+    <p class="mb-4">
+      <%= @category.description %>
+    </p>
+    <%= link_to "New Photo", new_photo_path(category_id: @category.id), class:"button button--secondary fit-content mb-4"%>
+    <% unless @category.photos.count > 0 %>
+      <p>This category does not have photos yet, add photos please</p>
+    <% else %>
+      <% @category.photos.each do |photo| %>
+          <%# llamar a otra vista con el valor asignado  %>
+          <%# ojo el valor tiene que estar en igual al del render que estoy llamando %>
+          <%= render "photos/photo", photo: photo %>  
+      <% end %>
+      <br>
+      <%# comment %>
+      <%= render "comments/form", comment: Comment.new(commentable: @category) %>
+      <%# views comments %>
+      <br>
+      <h2> Comments</h2>
+      <% unless @category.comments.count > 0 %>
+        <p>This category has no comments yet, please add a comment</p>
+      <% else %>
+        <% @category.comments.order(created_at: :desc).each do |comment| %>
+          <hr>
+          <%= render  "comments/comment", comment: comment %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+

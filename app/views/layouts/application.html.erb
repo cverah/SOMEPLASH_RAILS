@@ -11,6 +11,26 @@
   </head>
 
   <body>
+    <header class="container section-xs width-all">
+      <div class="main">
+        <%= link_to root_path, class:"block"  do %>
+          <%= image_tag "someplash.png", alt:"imagen-someplash", size: "180x40" %>
+        <% end %>
+        <%= link_to "Search", "/search", class:"button button--secondary button--sm fit-content mb-4" %>
+      </div>
+    </header>
+    <hr class="no-margin no-padding">
     <%= yield %>
+    <footer class="footer">
+      <div class="footer__content">
+        <strong class="center-text">Build with ♥ by</strong>
+        <div class="footer__content--data">
+          <%= link_to "https://github.com/cverah", target: "_blank" do %>
+            <%= image_tag "icons/linkedin.svg", alt:"icon-linkedin", class:"icons-category" %>
+          <% end %>
+          <strong>Cristhian Mario Vera Huamani</strong>
+        </div>
+        </div>
+    </footer>
   </body>
 </html>

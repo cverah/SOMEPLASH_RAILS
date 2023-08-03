@@ -1,0 +1,79 @@
+/* * {
+  border: 1px solid green;
+} */
+
+.photos-card {
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.photos-card__content {
+  padding: 0.5em 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+
+.photos-card__content a:hover {
+  text-decoration: underline;
+  text-decoration-color: black;
+  cursor: pointer;
+}
+
+.photos-card__image {
+  width: 100%;
+}
+
+.photos-card__image_photos {
+  height: 45vh;
+  width: 100%;
+}
+
+.photos-card__icons {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  gap: 8px;
+  justify-content: end;
+  width: 100%;
+  padding: 8px 16px;
+}
+
+.icons-category {
+  width: 25px;
+  height: 25px;
+}
+
+.content-error {
+  padding: 16px;
+  background-color: #f6e1e1;
+  border-radius: 8px;
+}
+
+.content-comments {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 0;
+  border-top: solid 2px #d3d3d3;
+}
+
+.content-comments_option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.photo-title:hover {
+  text-decoration: underline;
+  text-decoration-color: black;
+  cursor: pointer;
+}

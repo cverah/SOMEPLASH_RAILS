@@ -1,0 +1,15 @@
+<div id="<%= dom_id comment %>" class="comment_content">
+  <p>
+    <%= comment.body %>
+  </p>
+  <div class="comment_content--footer"> 
+  <%# sacar tiempo que ha pasado %>
+    <% date_creation = Time.zone.parse(comment.created_at.to_s)
+      time_passed = time_ago_in_words(date_creation, include_seconds: true)       
+    %>
+    <small class="light text-1rem gray-300">Seed <%= time_passed %></small>
+    <%= link_to comment_path(comment), class:"", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+      <%= image_tag "icons/icon-trash.svg", alt:"icon-trash", class:"icons-category" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="section">
+    <p style="color: green"><%= notice %></p>
+    <%# photo %>
+    <h2 class="mb-4">  <%= @photo.title %></h2>
+    <p class="">
+      <%= @photo.description %>
+    </p>
+    <small class="light text-1rem gray-300 mb-4"><%= @photo.updated_at.strftime("Updated at %B %d, %Y") %></small>
+    <div class="mb-4">
+      <% if @photo.image.attached? %>
+        <%= image_tag(@photo.image, alt:"photo-img", class:"categories-card__image" ) %>
+      <% end %>
+    </div>
+    <%# comment %>
+    <%= render "comments/form", comment: Comment.new(commentable: @photo) %>
+    <%# views comments %>
+    <br>
+    <h2> Comments</h2>
+    <% unless @photo.comments.count > 0 %>
+      <p>this photo has no comments please add comments</p>
+    <% else %>
+      <% @photo.comments.order(created_at: :desc).each do |comment| %>
+      <hr>
+        <%= render  "comments/comment", comment: comment %>
+      <% end %>
+    <% end %>
+
+  </div>
+</div>
