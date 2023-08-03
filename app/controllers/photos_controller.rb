@@ -50,6 +50,13 @@ class PhotosController < ApplicationController
     redirect_to @photo.category, notice: "Photo was successfully destroyed.", status: :see_other
   end
 
+  def search
+    @query= params[:query]
+    unless @query.nil?
+      @photos = Photo.where(" LOWER(title) LIKE ?", "%#{@query.downcase}%")
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_photo
